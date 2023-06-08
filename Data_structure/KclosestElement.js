@@ -1,3 +1,12 @@
+/*
+Given a sorted integer array arr, two integers k and x, return the k closest integers to x in the array. The result should also be sorted in ascending order.
+
+An integer a is closer to x than an integer b if:
+
+|a - x| < |b - x|, or
+|a - x| == |b - x| and a < b
+ */
+// linear serch used for find the x element
 const linearSearch = (array,searchElement) =>{
     const len = array.length;
     for(let i=0;i<len;i++){
@@ -13,9 +22,23 @@ const kColsestElement = (array,k,x) => {
     let left = found - 1;
     let right = found + 1;
     while(k>1){
-        if(r===array.length){
-            return array.slice(found-k+1,r);
+        // edge case of the program
+        if(right===array.length){
+            return array.slice(found-k+1,right);
         }
+        if(left >= 0 && right < array.length){
+            const val = array[found];
+            const preDiff = Math.abs(array[left] - val);
+            const nextDiff = Math.abs(array[right] - val);
+            if(preDiff === nextDiff || preDiff < nextDiff){
+                left--;
+            }
+            else{
+                right++;
+            }
+        }
+        k--;
     }
+    return array.slice(left+1,right);
 }
-console.log(linearSearch([10,5,7,12,17],12));
+console.log(kColsestElement([6,2,5,4,3,1,7,8],4,4));
