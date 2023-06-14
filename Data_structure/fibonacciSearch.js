@@ -1,3 +1,4 @@
+const searchElement = 99;
 const fibonacciSearch = (array,x) =>{
     const n = array.length;
     let offset = -1;
@@ -13,7 +14,7 @@ const fibonacciSearch = (array,x) =>{
     while(fm>1){
         let i = Math.min(offset+fm2,n-1);
         if(array[i] === x){
-            return i;
+            return i+1;
         }
         else if(array[i] < x){
             fm = fm1
@@ -29,4 +30,4 @@ const fibonacciSearch = (array,x) =>{
     }
     
 }
-fibonacciSearch([10,12,17,20,25,28],10);
+console.log(`${searchElement} is stay at position ${fibonacciSearch([10,12,17,20,25,28,33,80,99],searchElement)}`);
