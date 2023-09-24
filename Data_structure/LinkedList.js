@@ -6,6 +6,7 @@ class list{
             next:null
         }
         this.tail = this.head;
+        this.size = 1;
     }
     pushLastNode(nodeData){
         let newNode = {
@@ -14,12 +15,13 @@ class list{
         }
         this.tail.next = newNode;
         this.tail = newNode;
-
+        this.size =+ 1;
+        return this.size;
     }
 }
 const listONe = new list(100);
-listONe.pushLastNode(500);
-listONe.pushLastNode(400);
-console.log(listONe);
+console.log(listONe.pushLastNode(500));
+console.log(listONe.pushLastNode(400));
+
 
 
